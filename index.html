@@ -4,244 +4,255 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YANPE | MALA — Nueva Era 2026</title>
+    
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;900&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;900&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-color: #050505;
-            --accent-red: #e60000;
-            --text-main: #ffffff;
-            --text-dim: #888888;
-            --transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --bg: #030303;
+            --accent: #ff0000;
+            --text: #ffffff;
+            --text-dim: #666;
+            --transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: crosshair;
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            letter-spacing: -0.02em;
         }
-
-        /* --- Custom Scrollbar --- */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 30px 50px;
+            padding: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            mix-blend-mode: difference;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 30px;
         }
 
         .nav-links a {
-            color: var(--text-main);
+            color: white;
             text-decoration: none;
             font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: 300;
             transition: var(--transition);
+            opacity: 0.7;
         }
 
         .nav-links a:hover {
-            color: var(--accent-red);
-            letter-spacing: 5px;
+            opacity: 1;
+            color: var(--accent);
         }
 
         /* --- Hero Section --- */
         #hero {
             height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1514525253361-b83a85f08a71?q=80&w=2574&auto=format&fit=crop'); /* Cinematic Concert/Stage Mood */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Red Ambient Glow */
-        .glow {
+        .red-overlay {
             position: absolute;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(230, 0, 0, 0.1) 0%, transparent 70%);
-            bottom: -10%;
-            left: 50%;
-            transform: translateX(-50%);
-            filter: blur(80px);
-            z-index: 0;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
         }
 
         .hero-content h1 {
-            font-size: clamp(6rem, 15vw, 12rem);
+            font-size: clamp(5rem, 18vw, 15rem);
             font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 0.8;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            line-height: 0.85;
+            margin: 0;
             text-transform: uppercase;
-            animation: fadeInScale 1.5s ease-out;
+            filter: drop-shadow(0 0 10px rgba(255,0,0,0.3));
         }
 
         .hero-content p {
+            margin-top: 20px;
             font-size: 14px;
-            letter-spacing: 8px;
+            letter-spacing: 12px;
             text-transform: uppercase;
             color: var(--text-dim);
-            margin-top: 10px;
             font-weight: 300;
         }
 
         /* --- Music Section --- */
         #music {
-            padding: 150px 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 100px 5%;
+            background: #000;
             text-align: center;
         }
 
-        .section-label {
+        .section-tag {
             font-size: 10px;
-            letter-spacing: 5px;
+            color: var(--accent);
             text-transform: uppercase;
-            color: var(--accent-red);
-            margin-bottom: 50px;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
             display: block;
         }
 
-        .spotify-container {
-            background: #0a0a0a;
+        .spotify-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid #111;
             padding: 20px;
-            border: 1px solid #1a1a1a;
-            border-radius: 4px;
+            background: #050505;
             transition: var(--transition);
         }
 
-        .spotify-container:hover {
-            border-color: var(--accent-red);
-            box-shadow: 0 0 30px rgba(230, 0, 0, 0.1);
+        .spotify-wrapper:hover {
+            border-color: #333;
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.05);
         }
 
         /* --- About Section --- */
         #about {
-            padding: 150px 10%;
+            min-height: 100vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            padding: 100px 5%;
             align-items: center;
             gap: 100px;
         }
 
+        .about-image {
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1601054704854-1a2e79dac4d3?q=80&w=2574&auto=format&fit=crop'); /* Luxury Studio/Fashion Shot */
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(1) brightness(0.7);
+            border: 1px solid #222;
+        }
+
         .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
             margin-bottom: 30px;
             font-weight: 100;
+            font-style: italic;
         }
 
         .about-text p {
-            color: var(--text-dim);
             font-size: 1.1rem;
-            max-width: 400px;
+            line-height: 1.8;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin-bottom: 40px;
         }
 
-        /* --- Visuals Section --- */
+        /* --- Visuals / Editorial Section --- */
         #visuals {
-            padding: 100px 5%;
+            padding: 100px 2%;
         }
 
         .editorial-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
         }
 
-        .image-box {
-            height: 600px;
-            background: #111;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Placeholder images mimicking high fashion shots */
-        .img-1 { background: linear-gradient(45deg, #000, #111); }
-        .img-2 { background: linear-gradient(to bottom, #000, #1a0000); }
-        .img-3 { background: linear-gradient(135deg, #0a0a0a, #050505); }
-
-        .image-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            filter: grayscale(100%);
+        .grid-item {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
             transition: var(--transition);
+            filter: grayscale(1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .image-box:hover img {
-            opacity: 1;
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .grid-item:hover {
+            filter: grayscale(0);
+            transform: scale(0.98);
         }
+
+        /* Specific High Fashion Vibes */
+        .item-1 { background-image: url('https://images.unsplash.com/photo-1508851413544-7aa1e3d4b6c9?q=80&w=2570&auto=format&fit=crop'); } /* Urban Night */
+        .item-2 { background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2570&auto=format&fit=crop'); } /* Red Neon */
+        .item-3 { background-image: url('https://images.unsplash.com/photo-1515462277126-2dd0c162007a?q=80&w=2570&auto=format&fit=crop'); } /* Luxury Interior */
+        .item-4 { background-image: url('https://images.unsplash.com/photo-1520156522401-4470d306666a?q=80&w=2570&auto=format&fit=crop'); } /* Car Detail */
 
         /* --- Socials Section --- */
         #socials {
             padding: 150px 0;
             text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            background: radial-gradient(circle at bottom, rgba(255,0,0,0.1) 0%, transparent 50%);
         }
 
         .btn-luxury {
-            padding: 15px 40px;
-            border: 1px solid #333;
+            display: inline-block;
+            padding: 20px 60px;
+            border: 1px solid #222;
             text-decoration: none;
-            color: var(--text-main);
+            color: white;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 3px;
+            font-size: 12px;
+            letter-spacing: 5px;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-luxury:hover {
-            border-color: var(--accent-red);
-            color: #fff;
-            background: var(--accent-red);
+            background: white;
+            color: black;
+            border-color: white;
+        }
+
+        .spotify-direct {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            display: block;
+            margin-top: 30px;
+            letter-spacing: 2px;
         }
 
         /* --- Animations --- */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .reveal.active {
@@ -249,33 +260,29 @@
             transform: translateY(0);
         }
 
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.95); filter: blur(10px); }
-            100% { opacity: 1; transform: scale(1); filter: blur(0); }
-        }
-
         @media (max-width: 768px) {
-            #about, .editorial-grid { grid-template-columns: 1fr; }
+            #about { grid-template-columns: 1fr; }
+            .editorial-grid { grid-template-columns: 1fr 1fr; }
+            .hero-content h1 { font-size: 6rem; }
             .nav-links { display: none; }
-            .hero-content h1 { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo" style="font-weight: 900; letter-spacing: 2px;">YANPE</div>
+        <div style="font-weight: 900; font-size: 20px;">YANPE</div>
         <div class="nav-links">
-            <a href="#hero">Home</a>
-            <a href="#music">Music</a>
-            <a href="#about">About</a>
+            <a href="#hero">Inicio</a>
+            <a href="#music">Música</a>
+            <a href="#about">Artista</a>
             <a href="#visuals">Visuals</a>
-            <a href="#socials">Socials</a>
+            <a href="#socials">Social</a>
         </div>
     </nav>
 
     <section id="hero">
-        <div class="glow"></div>
+        <div class="red-overlay"></div>
         <div class="hero-content">
             <h1>YANPE</h1>
             <p>MALA — Nueva Era 2026</p>
@@ -283,71 +290,69 @@
     </section>
 
     <section id="music" class="reveal">
-        <span class="section-label">Latest Release</span>
-        <div class="spotify-container">
-            <!-- Replace with actual Spotify URI -->
-            <iframe src="https://open.spotify.com/embed/track/3Y7Xv77vHk26kHiooV32vF?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <span class="section-tag">Directo de Spotify</span>
+        <div class="spotify-wrapper">
+            <!-- Embedding your requested album link -->
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7hcItNG0Dzlj80JNmpcdEy?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
+        <a href="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy" target="_blank" class="spotify-direct">Abrir en Spotify App →</a>
     </section>
 
     <section id="about" class="reveal">
-        <div class="about-image">
-            <div style="width: 100%; height: 500px; background: #111; border-left: 2px solid var(--accent-red);">
-                <!-- Artist Editorial Photo -->
-                <img src="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy" alt="Yanpe Editorial" style="width:100%; height:100%; object-fit:cover; opacity: 0.5;">
-            </div>
-        </div>
+        <div class="about-image"></div>
         <div class="about-text">
-            <h2>The New Era of Reggaeton.</h2>
-            <p>Born in the shadows, refined in the light. Yanpe blends high-fashion aesthetics with the raw energy of modern trap. "MALA" isn't just a project; it's a statement of luxury, power, and the evolution of the Latin sound.</p>
+            <span class="section-tag" style="margin: 0;">Perfil</span>
+            <h2>El sonido del lujo nocturno.</h2>
+            <p>Yanpe redefine la estética del género urbano. Con una propuesta visual que bebe de la alta costura y un sonido arraigado en el trap más crudo de Miami, "MALA" marca el inicio de una era donde la exclusividad y el ritmo convergen.</p>
+            <a href="#socials" class="btn-luxury">Contacto</a>
         </div>
     </section>
 
     <section id="visuals" class="reveal">
-        <span class="section-label" style="text-align: center;">Editorial Series 01</span>
+        <span class="section-tag" style="text-align: center; display: block; margin-bottom: 60px;">Lookbook Editorial 2026</span>
         <div class="editorial-grid">
-            <div class="image-box img-1"><img src="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy"></div>
-            <div class="image-box img-2"><img src="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy"></div>
-            <div class="image-box img-3"><img src="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy"></div>
+            <div class="grid-item item-1"></div>
+            <div class="grid-item item-2"></div>
+            <div class="grid-item item-3"></div>
+            <div class="grid-item item-4"></div>
         </div>
     </section>
 
     <section id="socials" class="reveal">
-        <span class="section-label">Connect</span>
-        <div class="social-links">
+        <span class="section-tag">Únete a la era</span>
+        <h2 style="font-size: 3rem; margin-bottom: 50px; font-weight: 100;">FOLLOW YANPE</h2>
+        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <a href="https://open.spotify.com/album/7hcItNG0Dzlj80JNmpcdEy" target="_blank" class="btn-luxury">Spotify</a>
             <a href="#" class="btn-luxury">Instagram</a>
-            <a href="#" class="btn-luxury">Spotify</a>
             <a href="#" class="btn-luxury">YouTube</a>
         </div>
-        <p style="margin-top: 100px; font-size: 9px; color: #333; letter-spacing: 2px;">© 2026 YANPE STUDIOS. ALL RIGHTS RESERVED.</p>
+        
+        <p style="margin-top: 150px; font-size: 9px; color: #333; letter-spacing: 3px;">
+            &copy; 2026 YANPE STUDIOS | MALA PROJECT
+        </p>
     </section>
 
     <script>
-        // Scroll Reveal Animation
-        const reveals = document.querySelectorAll('.reveal');
-
-        const revealOnScroll = () => {
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                }
-            }
+        // Reveal elements on scroll
+        const observerOptions = {
+            threshold: 0.1
         };
 
-        window.addEventListener('scroll', revealOnScroll);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-        // Initial check
-        revealOnScroll();
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Parallax effect for the hero name
+        // Subtle Parallax for Hero
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroTitle = document.querySelector('.hero-content h1');
-            heroTitle.style.transform = `translateY(${scrolled * 0.3}px)`;
-            heroTitle.style.opacity = 1 - (scrolled / 700);
+            const scroll = window.pageYOffset;
+            document.querySelector('.hero-content').style.transform = `translateY(${scroll * 0.4}px)`;
+            document.querySelector('.hero-content').style.opacity = 1 - (scroll / 800);
         });
     </script>
 </body>
