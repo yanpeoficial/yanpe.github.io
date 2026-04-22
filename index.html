@@ -7,141 +7,126 @@
 
 <style>
 body {
-    margin: 0;
-    background: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #050505;
+  color: white;
+  scroll-behavior: smooth;
 }
 
-/* Background Glow Animation /
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 60%);
-    animation: pulse 6s infinite;
-    z-index: 0;
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
-@keyframes pulse {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-    100% { opacity: 0.3; }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
-.container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    text-align: center;
+/* SECTIONS */
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/ Huge Background Text /
-.bg-text {
-    position: absolute;
-    font-size: 22vw;
-    font-weight: 900;
-    color: rgba(255,255,255,0.03);
-    z-index: 0;
-    user-select: none;
+/* HERO */
+.hero {
+  background: radial-gradient(circle, rgba(255,0,0,0.25), black);
 }
 
-/ Logo /
-.logo {
-    font-size: 90px;
-    font-weight: bold;
-    z-index: 2;
-    color: #ff2b2b;
-    text-shadow: 0 0 25px rgba(255,0,0,0.7);
-    animation: fadeUp 1.2s ease forwards;
+.hero h1 {
+  font-size: 90px;
+  color: #ff2a2a;
+  text-shadow: 0 0 25px rgba(255,0,0,0.8);
+  margin: 0;
 }
 
-/ Signature /
-.signature {
-    margin-top: 10px;
-    font-size: 22px;
-    color: #ff4d4d;
-    font-family: cursive;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeUp 1.5s ease forwards;
+.hero p {
+  opacity: 0.7;
+  letter-spacing: 3px;
 }
 
-/ Links /
-.links {
-    margin-top: 30px;
-    z-index: 2;
-    display: flex;
-    gap: 20px;
-    opacity: 0;
-    animation: fadeUp 1.8s ease forwards;
+/* MUSIC */
+.music iframe {
+  border-radius: 20px;
+  width: 300px;
+  height: 380px;
 }
 
-.links a {
-    text-decoration: none;
-    color: white;
-    border: 1px solid rgba(255,255,255,0.2);
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: 0.3s;
+/* ABOUT */
+.about {
+  max-width: 600px;
+  text-align: center;
+  opacity: 0.8;
 }
 
-.links a:hover {
-    background: #ff2b2b;
-    border-color: #ff2b2b;
+/* SOCIALS */
+.socials a {
+  display: block;
+  margin: 10px;
+  padding: 12px 25px;
+  border: 1px solid #ff2a2a;
+  color: #ff2a2a;
+  text-decoration: none;
+  border-radius: 30px;
 }
 
-/ Spotify /
-.spotify {
-    margin-top: 40px;
-    z-index: 2;
-    opacity: 0;
-    animation: fadeUp 2s ease forwards;
+/* glow effect */
+.glow {
+  text-shadow: 0 0 15px red;
 }
 
-/ Animation */
-@keyframes fadeUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<nav>
+  <a href="#home">HOME</a>
+  <a href="#music">MUSIC</a>
+  <a href="#about">ABOUT</a>
+  <a href="#socials">SOCIALS</a>
+</nav>
 
-    <div class="bg-text">YANPE</div>
+<section id="home" class="hero">
+  <h1>YANPE</h1>
+  <p>MALA ERA</p>
+</section>
 
-    <div class="logo">YP</div>
+<section id="music" class="music">
+  <h2 class="glow">LATEST RELEASE</h2>
+  <iframe src="https://open.spotify.com/embed/artist/2mjm69DhnPdhk22CG5llti"></iframe>
+</section>
 
-    <div class="signature">Yanpe</div>
+<section id="about" class="about">
+  <h2 class="glow">ABOUT</h2>
+  <p>
+    Yanpe is a new wave artist bringing a dark luxury reggaetón sound.
+    Blending emotion, nightlife energy, and modern Latin influence,
+    this is the start of a new era.
+  </p>
+</section>
 
-    <div class="links">
-        <a href="https://instagram.com/yanpeoficial" target="_blank">Instagram</a>
-        <a href="https://open.spotify.com/artist/2mjm69DhnPdhk22CG5llti?si=CnV7aXZgQpGhyUp0HzRlvw" target="_blank">Spotify</a>
-    </div>
-
-    <div class="spotify">
-        <iframe style="border-radius:12px" 
-        src="https://open.spotify.com/embed/artist/2mjm69DhnPdhk22CG5llti" 
-        width="300" height="380" frameBorder="0" allowfullscreen="" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-        </iframe>
-    </div>
-
-</div>
+<section id="socials" class="socials">
+  <h2 class="glow">CONNECT</h2>
+  <a href="https://instagram.com/yanpeoficial" target="_blank">Instagram</a>
+  <a href="https://open.spotify.com/artist/2mjm69DhnPdhk22CG5llti" target="_blank">Spotify</a>
+</section>
 
 </body>
 </html>
